@@ -30,7 +30,7 @@
                                 <input type="text" class="form-control" ng-model="student.phone">
                             </div>
                         </div>
-                        <label>Address</label>
+                        <h3>Address</h3>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Line1*</label>
@@ -73,6 +73,37 @@
                             </div>
                         </div>
 
+                        <div class="row control-group">
+                        	<div class="form-group col-xs-6 floating-label-form-group controls">
+                        		<span style="font-size: 150%;">Marks<span>
+                        	</div>
+                        	<div class="form-group col-xs-6 floating-label-form-group controls">
+                        		<button ng-click="addMarks()">Add a marks</button>
+                        	</div>
+                        
+                    	</div>
+
+                        
+
+
+                        <div ng-repeat="mark in student.marks">
+
+                        	<h4>Subject {{$index+1}}</h4>
+
+					        <div class="row control-group">
+	                            <div class="form-group col-xs-12 floating-label-form-group controls">
+	                                <label>Subject Name*</label>
+	                                <input type="tel" class="form-control" ng-model="mark.subjectName">
+	                            </div>
+	                        </div>
+
+	                        <div class="row control-group">
+	                            <div class="form-group col-xs-12 floating-label-form-group controls">
+	                                <label>Subject Marks*</label>
+	                                <input type="tel" class="form-control" ng-model="mark.subjectMarks">
+	                            </div>
+	                        </div>
+					    </div>                        
 
                         <br>
                         <div id="success"></div>
