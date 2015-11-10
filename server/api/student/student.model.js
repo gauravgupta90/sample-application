@@ -14,7 +14,7 @@ var StudentSchema = new Schema({
   	state: { type:String, required: true },
   	pin: { type:String, required: true },
   	email: { type:String, required: true },
-  	marks: [{ type: Object }]
+  	marks: [{}]
   },
 
 });

@@ -6,7 +6,8 @@ angular.module('myAppApp')
     $scope.create = function(){
         $http.post('/api/students', $scope.student)	    
 	    .success(function(res){
-            alert("Student successfully created");  
+            alert("Student successfully created");
+            console.log($scope.student);
             $scope.student = {};          
         }).error(function(err){
         	alert("Please check the data you have entered");
@@ -22,7 +23,7 @@ angular.module('myAppApp')
     	}
     	var length = $scope.student.marks.length;
     	if(length){
-    		if($scope.student.marks[length-1].subjectName =='' || !$scope.student.marks[length-1].subjectName){
+    		if($scope.student.marks[length-1].subjectName =='' || !$scope.student.marks[length-1].subjectName || $scope.student.marks[length-1].subjectMarks =='' || !$scope.student.marks[length-1].subjectMarks){
 	    		alert("please fill the marks first");
 	    	}
 	    	else
