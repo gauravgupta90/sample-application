@@ -3,12 +3,16 @@
 angular.module('myAppApp')
   .controller('ListStudentCtrl', function ($scope, $http, $location) {
     $scope.students = {};
-    $http.get('/api/students')	    
-	   .success(function(res){
-        $scope.students = res;
-    }).error(function(err){
-      	alert("Unable to get student list");
-    })
+
+    $scope.init = function(){
+        $http.get('/api/students')      
+         .success(function(res){
+            $scope.students = res;
+        }).error(function(err){
+            alert("Unable to get student list");
+        })
+
+    }
 
     $scope.viewDetail = function(studentId){
     	$location.path('/viewStudent/'+studentId);
@@ -17,12 +21,7 @@ angular.module('myAppApp')
     $scope.delete = function(studentId){
     	$http.delete('/api/students/'+studentId)     
       .success(function(res){
-          $http.get('/api/students')     
-          .success(function(res){
-              $scope.students = res;
-          }).error(function(err){
-              alert("Unable to get student list");
-          })
+          $scope.init();
       }).error(function(err){
           alert("Unable to delete");
       })
@@ -31,4 +30,6 @@ angular.module('myAppApp')
     $scope.addStudent = function(){
       $location.path('/student');
     }
+
+    $scope.init();
   });

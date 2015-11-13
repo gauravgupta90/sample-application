@@ -7,9 +7,11 @@ angular.module('myAppApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'angular-growl'
 ])
-  .config(function($routeProvider, $locationProvider, $httpProvider) {
+  .config(function($routeProvider, $locationProvider, $httpProvider, growlProvider) {
+    growlProvider.globalTimeToLive(5000);
     $routeProvider
       .otherwise({
         redirectTo: '/'

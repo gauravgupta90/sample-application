@@ -6,21 +6,17 @@ angular.module('myAppApp')
     $scope.subject = {};
     $scope.shouldShowCreateSubject = false;
 
-    function getSubject(){
-    	$http.get('/api/subjects')	    
-		.success(function(res){
-	        $scope.subjects = res;
-	    }).error(function(err){
-	      	alert("Unable to get subject list");
-	    })
-    }
-
     function toggleView(){
     	$scope.shouldShowCreateSubject = !$scope.shouldShowCreateSubject;
     }
     
     $scope.init = function(){
-        getSubject();
+        $http.get('/api/subjects')      
+        .success(function(res){
+            $scope.subjects = res;
+        }).error(function(err){
+            alert("Unable to get subject list");
+        })
     }
 
     $scope.toggleView =  function(){
@@ -32,8 +28,9 @@ angular.module('myAppApp')
 	    .success(function(res){
             alert("Subject successfully created");
             $scope.student = {};
-            getSubject();
             toggleView();
+            $scope.init();
+            
         }).error(function(err){
         	alert("Please check the data you have entered");
         })        
