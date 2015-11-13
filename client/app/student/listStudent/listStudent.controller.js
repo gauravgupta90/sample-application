@@ -21,7 +21,8 @@ angular.module('myAppApp')
     $scope.delete = function(studentId){
     	$http.delete('/api/students/'+studentId)     
       .success(function(res){
-          $scope.init();
+          alert("successfully Deleted");
+           $scope.init();
       }).error(function(err){
           alert("Unable to delete");
       })

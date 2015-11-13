@@ -36,5 +36,15 @@ angular.module('myAppApp')
         })        
     }
 
+    $scope.delete = function(subjectId){
+        $http.delete('/api/subjects/'+subjectId)     
+      .success(function(res){
+          alert("successfully Deleted");
+           $scope.init();
+      }).error(function(err){
+          alert("Unable to delete");
+      })
+    }
+
     $scope.init();
   });

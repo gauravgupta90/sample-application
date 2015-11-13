@@ -18,10 +18,12 @@
 	    	<tr>
 	            <th>Subject Name</th>
 	            <th>Subject Code</th>
+                <th></th>
 	        </tr>	        
 	        <tr ng-repeat="subject in subjects">
 	            <td>{{subject.name}}</th>
 	            <td>{{subject.code}}</td>
+                <td><button type="button" class="btn btn-primary" ng-click="delete(subject._id)">Delete</button></td>
 	        </tr>
 	    </table>
 	</div>

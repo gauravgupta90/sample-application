@@ -25,7 +25,9 @@ angular.module('myAppApp')
     $scope.update = function(){
     	$http.put('/api/students/'+param, $scope.student)	    
 		.success(function(res){
-			$scope.init();	        
+			$scope.init();
+            alert("Updated Successfully");
+            $location.path('/listStudent');        
 	    }).error(function(err){
 	      	alert("Unable to update");
 	    })
