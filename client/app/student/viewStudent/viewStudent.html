@@ -77,34 +77,23 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-6 floating-label-form-group controls">
                                 <span style="font-size: 150%;">Marks<span>
-                            </div>
-                            <div class="form-group col-xs-6 floating-label-form-group controls" ng-show="!shouldReadOnly">
-                                <button ng-click="addMarks()">Add a marks</button>
-                            </div>
-                        
+                            </div>                        
                         </div>
 
-                        
-
-
-                        <div ng-repeat="mark in student.marks">
-
-                        	<h4>Subject {{$index+1}}</h4>
-
-					        <div class="row control-group">
-	                            <div class="form-group col-xs-12 floating-label-form-group controls">
-	                                <label>Subject Name*</label>
-	                                <input type="text" class="form-control" ng-model="mark.subjectName" ng-readonly= "shouldReadOnly">
-	                            </div>
-	                        </div>
-
-	                        <div class="row control-group">
-	                            <div class="form-group col-xs-12 floating-label-form-group controls">
-	                                <label>Subject Marks*</label>
-	                                <input type="text" class="form-control" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly">
-	                            </div>
-	                        </div>
-					    </div>                        
+                        <div class="col-sm-12">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Subject Name</th>
+                                    <th>Subject Code</th>
+                                    <th>Marks Scored</th>
+                                </tr>           
+                                <tr ng-repeat="mark in student.marks">
+                                    <td>{{mark.subjectName}}</th>
+                                    <td>{{mark.subjectCode}}</td>
+                                    <td><input type="text" class="form-control" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly"></td>
+                                </tr>
+                            </table>
+                        </div>                       
 
                         <br>
                     

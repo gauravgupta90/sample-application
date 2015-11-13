@@ -16,24 +16,7 @@ angular.module('myAppApp')
     	$scope.shouldReadOnly = false;
     }
 
-    $scope.addMarks = function () {
-    	if(!$scope.student.marks)
-    		$scope.student.marks = [];
-    	var marks = {
-    		subjectName : '',
-    		subjectMarks : ''
-    	}
-    	var length = $scope.student.marks.length;
-    	if(length){
-    		if($scope.student.marks[length-1].subjectName =='' || !$scope.student.marks[length-1].subjectName || $scope.student.marks[length-1].subjectMarks =='' || !$scope.student.marks[length-1].subjectMarks){
-	    		alert("please fill the marks first");
-	    	}
-	    	else
-	        	$scope.student.marks.push(marks);
-	    }
-  		else
-  			$scope.student.marks.push(marks);
-    };
+    
 
     $scope.update = function(){
     	$http.put('/api/students/'+param, $scope.student)	    
