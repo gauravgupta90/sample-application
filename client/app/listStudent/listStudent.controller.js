@@ -18,9 +18,18 @@ angular.module('myAppApp')
     	window.open(url, '_blank'); // in new tab
     }
 
-    $scope.edit = function(studentId){
-    	var url = "http://localhost:9000/editStudent/"+studentId;
-    	console.log(url);
-     	window.open(url, '_blank'); // in new tab
+    $scope.delete = function(studentId){
+    	$http.delete('/api/students/'+studentId)     
+      .success(function(res){
+          $http.get('/api/students')     
+          .success(function(res){
+              $scope.students = res;
+              console.log($scope.students);         
+          }).error(function(err){
+              alert("Unable to get student list");
+          })
+      }).error(function(err){
+          alert("Unable to delete");
+      })
     }
   });
