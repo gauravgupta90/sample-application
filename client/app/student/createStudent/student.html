@@ -3,13 +3,15 @@
 <section class="primary" id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h3>Student Registration</h3>        
-                </div>
-                <div class="col-lg-6">
-                    <button type="button" class="btn btn-default btn-md pull-right" ng-click="listStudent()">
-                      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to List
-                    </button>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-6">
+                        <h3>Student Registration</h3>        
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-default btn-md pull-right" ng-click="listStudent()">
+                          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to List
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -38,76 +40,70 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Line1*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.line1">
+                                <input type="text" class="form-control" ng-model="student.address.line1">
                             </div>
                         </div>
                         
                        	<div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Line2*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.line2">
+                                <input type="text" class="form-control" ng-model="student.address.line2">
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>City*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.city">
+                                <input type="text" class="form-control" ng-model="student.address.city">
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>State*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.state">
+                                <input type="text" class="form-control" ng-model="student.address.state">
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Pin*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.pin">
+                                <input type="text" class="form-control" ng-model="student.address.pin">
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email*</label>
-                                <input type="tel" class="form-control" ng-model="student.address.email">
+                                <input type="text" class="form-control" ng-model="student.address.email">
                             </div>
                         </div>
 
                         <div class="row control-group">
                         	<div class="form-group col-xs-6 floating-label-form-group controls">
                         		<span style="font-size: 150%;">Marks<span>
-                        	</div>
-                        	<div class="form-group col-xs-6 floating-label-form-group controls">
-                        		<button ng-click="addMarks()">Add a marks</button>
-                        	</div>
-                        
+                        	</div>                        
                     	</div>
 
-                        
+                        <div class="col-sm-12">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Subject Name</th>
+                                    <th>Subject Code</th>
+                                    <th>Marks Scored</th>
+                                </tr>           
+                                <tr ng-repeat="mark in student.marks">
+                                    <td>{{mark.subjectName}}</th>
+                                    <td>{{mark.subjectCode}}</td>
+                                    <td><input type="text" class="form-control" ng-model="mark.subjectMarks"></td>
+                                </tr>
+                            </table>
+                        </div>
 
 
-                        <div ng-repeat="mark in student.marks">
 
-                        	<h4>Subject {{$index+1}}</h4>
 
-					        <div class="row control-group">
-	                            <div class="form-group col-xs-12 floating-label-form-group controls">
-	                                <label>Subject Name*</label>
-	                                <input type="tel" class="form-control" ng-model="mark.subjectName">
-	                            </div>
-	                        </div>
-
-	                        <div class="row control-group">
-	                            <div class="form-group col-xs-12 floating-label-form-group controls">
-	                                <label>Subject Marks*</label>
-	                                <input type="tel" class="form-control" ng-model="mark.subjectMarks">
-	                            </div>
-	                        </div>
-					    </div>                        
+                                               
 
                         <br>
                         <div id="success"></div>

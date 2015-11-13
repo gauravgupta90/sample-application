@@ -19,7 +19,9 @@ angular.module('myAppApp')
     	$scope.shouldShowCreateSubject = !$scope.shouldShowCreateSubject;
     }
     
-    getSubject();
+    $scope.init = function(){
+        getSubject();
+    }
 
     $scope.toggleView =  function(){
     	toggleView();
@@ -37,4 +39,5 @@ angular.module('myAppApp')
         })        
     }
 
+    $scope.init();
   });

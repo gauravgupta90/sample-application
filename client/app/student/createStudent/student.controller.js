@@ -2,7 +2,31 @@
 
 angular.module('myAppApp')
   .controller('StudentCtrl', function ($scope, $http, $location) {
-  	$scope.student = {}; 
+  	$scope.student = {};
+
+    function addMarks(obj) {
+        if(!$scope.student.marks)
+            $scope.student.marks = [];
+        var marks = {
+            subjectName : obj.name,
+            subjectCode : obj.code,
+            subjectMarks : ''
+        }
+        var length = $scope.student.marks.length;
+        $scope.student.marks.push(marks);
+    };
+
+    $scope.init = function(){
+        $http.get('/api/subjects')      
+        .success(function(res){
+            for(var obj in res){
+                addMarks(res[obj]);
+            }
+        }).error(function(err){
+            alert("Unable to get subject list");
+        })
+    }
+
     $scope.create = function(){
         $http.post('/api/students', $scope.student)	    
 	    .success(function(res){
@@ -14,26 +38,9 @@ angular.module('myAppApp')
         })        
     }
 
-    $scope.addMarks = function () {
-    	if(!$scope.student.marks)
-    		$scope.student.marks = [];
-    	var marks = {
-    		subjectName : '',
-    		subjectMarks : ''
-    	}
-    	var length = $scope.student.marks.length;
-    	if(length){
-    		if($scope.student.marks[length-1].subjectName =='' || !$scope.student.marks[length-1].subjectName || $scope.student.marks[length-1].subjectMarks =='' || !$scope.student.marks[length-1].subjectMarks){
-	    		alert("please fill the marks first");
-	    	}
-	    	else
-	        	$scope.student.marks.push(marks);
-	    }
-  		else
-  			$scope.student.marks.push(marks);
-    };
-
     $scope.listStudent = function(){
       $location.path('/listStudent');
     }
+
+    $scope.init();
 });
