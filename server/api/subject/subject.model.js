@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 
 var SubjectSchema = new Schema({
   name: { type:String, required: true },
-  code: { type:String, required: true }
+  code: { type:String, required: true },
+  totalMarks: { type:Number , required: true}
 });
 
 module.exports = mongoose.model('Subject', SubjectSchema);

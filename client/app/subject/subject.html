@@ -18,11 +18,13 @@
 	    	<tr>
 	            <th>Subject Name</th>
 	            <th>Subject Code</th>
+                <th>Total Marks</th>
                 <th></th>
 	        </tr>	        
 	        <tr ng-repeat="subject in subjects">
 	            <td>{{subject.name}}</th>
 	            <td>{{subject.code}}</td>
+                <td>{{subject.totalMarks}}</td>
                 <td><button type="button" class="btn btn-primary" ng-click="delete(subject._id)">Delete</button></td>
 	        </tr>
 	    </table>
@@ -60,6 +62,12 @@
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Subject Code*</label>
                         <input type="text" class="form-control" ng-model="subject.code">                           
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Total Marks*</label>
+                        <input type="number" class="form-control" ng-model="subject.totalMarks">                           
                     </div>
                 </div>
                 <div class="row">
