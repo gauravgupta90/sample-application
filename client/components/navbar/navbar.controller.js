@@ -7,15 +7,11 @@ angular.module('myAppApp')
       'link': '/'
     },
     {
-      'title': 'Create Student',
-      'link': '/student'
-    },
-    {
-      'title': 'List Student',
+      'title': 'Student',
       'link': '/listStudent'
     },
     {
-      'title': 'Subject Masterlist',
+      'title': 'Subject',
       'link': '/subject'
     }];
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myAppApp')
-  .controller('StudentCtrl', function ($scope, $http) {
+  .controller('StudentCtrl', function ($scope, $http, $location) {
   	$scope.student = {}; 
     $scope.create = function(){
         $http.post('/api/students', $scope.student)	    
@@ -32,4 +32,8 @@ angular.module('myAppApp')
   		else
   			$scope.student.marks.push(marks);
     };
+
+    $scope.listStudent = function(){
+      $location.path('/listStudent');
+    }
 });

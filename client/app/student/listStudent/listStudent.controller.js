@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myAppApp')
-  .controller('ListStudentCtrl', function ($scope, $http) {
+  .controller('ListStudentCtrl', function ($scope, $http, $location) {
     $scope.students = {};
     $http.get('/api/students')	    
 	   .success(function(res){
@@ -28,5 +28,9 @@ angular.module('myAppApp')
       }).error(function(err){
           alert("Unable to delete");
       })
+    }
+
+    $scope.addStudent = function(){
+      $location.path('/student');
     }
   });
