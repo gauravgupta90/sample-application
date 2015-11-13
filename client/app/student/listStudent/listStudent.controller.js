@@ -11,9 +11,7 @@ angular.module('myAppApp')
     })
 
     $scope.viewDetail = function(studentId){
-
-    	var url = "http://localhost:9000/viewStudent/"+studentId;
-    	window.open(url, '_blank'); // in new tab
+    	$location.path('/viewStudent/'+studentId);
     }
 
     $scope.delete = function(studentId){

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myAppApp')
-  .controller('ViewStudentCtrl', function ($scope, $http, $routeParams) {
+  .controller('ViewStudentCtrl', function ($scope, $http, $routeParams, $location) {
     $scope.shouldReadOnly = true;
     $scope.student = {};
     var param = $routeParams.id
@@ -32,5 +32,9 @@ angular.module('myAppApp')
 	    }).error(function(err){
 	      	alert("Unable to update");
 	    })
+    }
+
+    $scope.listStudent = function(){
+      $location.path('/listStudent');
     }
   });
