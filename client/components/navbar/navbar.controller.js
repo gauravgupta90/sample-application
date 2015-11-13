@@ -5,6 +5,14 @@ angular.module('myAppApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+      'title': 'Create Student',
+      'link': '/student'
+    },
+    {
+      'title': 'List Student',
+      'link': '/listStudent'
     }];
 
     $scope.isCollapsed = true;
