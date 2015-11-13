@@ -1,0 +1,75 @@
+<navbar></navbar>
+
+<div class="container" ng-show="!shouldShowCreateSubject">
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <h3>Subject Master List</h3>        
+        </div>
+        <div class="col-lg-6">
+	        <button type="button" class="btn btn-default btn-md pull-right" ng-click="toggleView()">
+			  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Subject
+			</button>
+		</div>
+    </div>
+
+
+    <div class="col-sm-12">
+	    <table class="table table-striped">
+	    	<tr>
+	            <th>Subject Name</th>
+	            <th>Subject Code</th>
+	        </tr>	        
+	        <tr ng-repeat="subject in subjects">
+	            <td>{{subject.name}}</th>
+	            <td>{{subject.code}}</td>
+	        </tr>
+	    </table>
+	</div>
+</div>
+
+
+<div class="container" ng-show="shouldShowCreateSubject">
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <h3>Subject Registration</h3>        
+        </div>
+        <div class="col-lg-6">
+	        <button type="button" class="btn btn-default btn-md pull-right" ng-click="toggleView()">
+			  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to List
+			</button>
+		</div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+        
+            <form novalidate="">
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Subject Name*</label>
+                        <input type="text" class="form-control" ng-model="subject.name">
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Subject Code*</label>
+                        <input type="text" class="form-control" ng-model="subject.code">                           
+                    </div>
+                </div>
+                <div class="row">
+	                <div class="form-group col-xs-12">
+	                    <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="saveSubject()">Save</button>
+	                </div>
+	            </div>
+                
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer></footer>

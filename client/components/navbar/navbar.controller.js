@@ -13,6 +13,10 @@ angular.module('myAppApp')
     {
       'title': 'List Student',
       'link': '/listStudent'
+    },
+    {
+      'title': 'Subject Masterlist',
+      'link': '/subject'
     }];
 
     $scope.isCollapsed = true;
