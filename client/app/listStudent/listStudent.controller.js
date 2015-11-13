@@ -4,7 +4,7 @@ angular.module('myAppApp')
   .controller('ListStudentCtrl', function ($scope, $http) {
     $scope.students = {};
     $http.get('/api/students')	    
-	.success(function(res){
+	   .success(function(res){
         $scope.students = res;
         console.log($scope.students);         
     }).error(function(err){
