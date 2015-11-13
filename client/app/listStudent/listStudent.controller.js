@@ -6,7 +6,6 @@ angular.module('myAppApp')
     $http.get('/api/students')	    
 	   .success(function(res){
         $scope.students = res;
-        console.log($scope.students);         
     }).error(function(err){
       	alert("Unable to get student list");
     })
@@ -14,7 +13,6 @@ angular.module('myAppApp')
     $scope.viewDetail = function(studentId){
 
     	var url = "http://localhost:9000/viewStudent/"+studentId;
-    	console.log(url);
     	window.open(url, '_blank'); // in new tab
     }
 
@@ -24,7 +22,6 @@ angular.module('myAppApp')
           $http.get('/api/students')     
           .success(function(res){
               $scope.students = res;
-              console.log($scope.students);         
           }).error(function(err){
               alert("Unable to get student list");
           })

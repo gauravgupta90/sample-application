@@ -86,10 +86,8 @@ exports.update = function(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Student.findByIdAsync(req.params.id)
-    .then(handleEntityNotFound(res))
-    .then(saveUpdates(req.body))
-    .then(responseWithResult(res))
+  Student.updateAsync({ '_id': req.params.id },req.body)
+    .then(responseWithResult(res, 201))
     .catch(handleError(res));
 };
 

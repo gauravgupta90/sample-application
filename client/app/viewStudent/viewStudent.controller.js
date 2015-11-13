@@ -38,10 +38,14 @@ angular.module('myAppApp')
     $scope.update = function(){
     	$http.put('/api/students/'+param, $scope.student)	    
 		.success(function(res){
-			console.log(res);
-	        alert("Updated Successfully"); 
-	        $scope.student = res;
-	        $scope.shouldReadOnly = true;
+			$http.get('/api/students/'+param)	    
+			.success(function(res){
+		        alert("Updated Successfully"); 
+		        $scope.student = res;
+		        $scope.shouldReadOnly = true;   
+		    }).error(function(err){
+		      	alert("Unable to get student detail");
+		    })	        
 	    }).error(function(err){
 	      	alert("Unable to update");
 	    })
