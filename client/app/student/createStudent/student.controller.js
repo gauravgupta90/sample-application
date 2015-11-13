@@ -12,15 +12,14 @@ angular.module('myAppApp')
             subjectCode : obj.code,
             subjectMarks : ''
         }
-        var length = $scope.student.marks.length;
         $scope.student.marks.push(marks);
     };
 
     $scope.init = function(){
         $http.get('/api/subjects')      
         .success(function(res){
-            for(var obj in res){
-                addMarks(res[obj]);
+            for(var i in res){
+                addMarks(res[i]);
             }
         }).error(function(err){
             alert("Unable to get subject list");

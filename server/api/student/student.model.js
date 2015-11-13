@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 
 var StudentSchema = new Schema({
   name: { type:String, required: true },
-  mobile: { type:String, required: true },
-  phone: { type:String },
+  mobile: { type:String, required: true, unique: true },
+  phone: { type:String, unique: true },
   address:{
   	line1: { type:String, required: true },
   	line2: { type:String },
