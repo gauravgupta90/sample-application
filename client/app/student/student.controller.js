@@ -8,7 +8,8 @@ angular.module('myAppApp')
 	    .success(function(res){
             alert("Student successfully created");
             console.log($scope.student);
-            $scope.student = {};          
+            $scope.student = {};
+            window.location="http://localhost:9000/listStudent";      
         }).error(function(err){
         	alert("Please check the data you have entered");
         })        
