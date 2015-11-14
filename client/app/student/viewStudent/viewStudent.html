@@ -17,30 +17,47 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                 
-                    <form novalidate="">
+                    <form name="updateStudent" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name*</label>
-                                <input type="text" class="form-control" ng-model="student.name" ng-readonly= "shouldReadOnly">
+                                <input type="text" class="form-control" name="name" ng-model="student.name" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.name.$dirty && updateStudent.name.$invalid">
+                                    <span ng-show="updateStudent.name.$error.required">Name is required.</span>
+                                </span>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Mobile Number*</label>
-                                <input type="text" class="form-control" ng-model="student.mobile" ng-readonly= "shouldReadOnly">                           
+                                <input type="text" class="form-control" ng-model="student.mobile" name="mobile" ng-minlength="10" ng-maxlength="10" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.mobile.$dirty && updateStudent.mobile.$invalid">
+                                    <span ng-show="updateStudent.mobile.$error.required || updateStudent.mobile.$error.number">Valid mobile number is required.</span>
+                                    <span class="help-block" ng-show="((updateStudent.mobile.$error.minlength || updateStudent.mobile.$error.maxlength) && updateStudent.mobile.$dirty) ">Mobile number should be 10 digits</span>
+                                </span>                            
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Phone Number*</label>
-                                <input type="text" class="form-control" ng-model="student.phone" ng-readonly= "shouldReadOnly">
+                                <input type="text" class="form-control" name="phone" ng-model="student.phone" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.phone.$dirty && updateStudent.phone.$invalid">
+                                    <span ng-show="updateStudent.phone.$error.required">Phone number is required.</span>
+                                </span>
                             </div>
                         </div>
                         <h3>Address</h3>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Line1*</label>
-                                <input type="text" class="form-control" ng-model="student.address.line1" ng-readonly= "shouldReadOnly">
+                                <input type="text" class="form-control" name="line1" ng-model="student.address.line1" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.line1.$dirty && updateStudent.line1.$invalid">
+                                    <span ng-show="updateStudent.line1.$error.required">Address line1 is required.</span>
+                                </span>
                             </div>
                         </div>
                         
@@ -54,28 +71,46 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>City*</label>
-                                <input type="text" class="form-control" ng-model="student.address.city" ng-readonly= "shouldReadOnly">
+                                <input type="text" class="form-control" name="city" ng-model="student.address.city" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.city.$dirty && updateStudent.city.$invalid">
+                                    <span ng-show="updateStudent.city.$error.required">City is required.</span>
+                                </span>
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>State*</label>
-                                <input type="text" class="form-control" ng-model="student.address.state" ng-readonly= "shouldReadOnly">
+                                <input type="text" class="form-control" name="state" ng-model="student.address.state" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.state.$dirty && updateStudent.state.$invalid">
+                                    <span ng-show="updateStudent.state.$error.required">State is required.</span>
+                                </span>
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Pin*</label>
-                                <input type="text" class="form-control" ng-model="student.address.pin" ng-readonly= "shouldReadOnly">
+                                <input type="number" class="form-control" name="pin" ng-model="student.address.pin" ng-readonly= "shouldReadOnly" ng-minlength="6" ng-maxlength="6" required>
+
+                                <span style="color:red" ng-show="updateStudent.pin.$dirty && updateStudent.pin.$invalid">
+                                    <span ng-show="updateStudent.pin.$error.required">Pin Number is required.</span>
+                                    <span class="help-block" ng-show="((updateStudent.pin.$error.minlength || updateStudent.pin.$error.maxlength) && updateStudent.pin.$dirty) ">Pin number should be 6 digits</span>
+                                </span>
                             </div>
                         </div>
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email*</label>
-                                <input type="text" class="form-control" ng-model="student.address.email" ng-readonly= "shouldReadOnly">
+                                <input type="email" class="form-control" name="email" ng-model="student.address.email" ng-readonly= "shouldReadOnly" required>
+
+                                <span style="color:red" ng-show="updateStudent.email.$dirty && updateStudent.email.$invalid">
+                                    <span ng-show="updateStudent.email.$error.required">Email is required.</span>
+                                    <span ng-show="updateStudent.email.$error.email">Invalid email address.</span>
+                                </span>
                             </div>
                         </div>
 
@@ -93,12 +128,20 @@
                                     <th>Subject Code</th>
                                     <th>Total Marks</th>
                                     <th>Marks Scored</th>
+                                    <th></th>
                                 </tr>           
                                 <tr ng-repeat="mark in student.marks">
                                     <td>{{mark.subjectName}}</th>
                                     <td>{{mark.subjectCode}}</td>
                                     <td>{{mark.totalMarks}}</td>
-                                    <td><input type="text" class="form-control" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly"></td>
+                                    <td><input type="number" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly" min="0" max={{mark.totalMarks}}>
+                                    </td>
+                                    <td>                                     
+                                            <span ng-show="updateStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">
+                                            </span>
+                                            <span ng-show="updateStudent.marks{{$index}}.$dirty && updateStudent.marks{{$index}}.$valid"class="glyphicon glyphicon-ok text-success"></span>
+
+                                    </td>
                                 </tr>
                             </table>
                         </div>                       
@@ -110,7 +153,7 @@
                                 <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="edit()">Edit</button>
                             </div>
                             <div class="form-group col-xs-12" ng-show="!shouldReadOnly">
-                                <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="update()">Update</button>
+                                <button type="submit" class="btn btn-success btn-lg pull-right" ng-disabled="updateStudent.$invalid" ng-click="update()">Update</button>
                             </div>
 
                         </div>

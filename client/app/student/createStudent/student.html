@@ -45,7 +45,7 @@
                                 <input type="text" class="form-control" name="phone" ng-model="student.phone" required>
 
                                 <span style="color:red" ng-show="createStudent.phone.$dirty && createStudent.phone.$invalid">
-                                    <span ng-show="createStudent.phone.$error.required">Phone Number is required.</span>
+                                    <span ng-show="createStudent.phone.$error.required">Phone number is required.</span>
                                 </span>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 <input type="text" class="form-control" name="line1" ng-model="student.address.line1" required>
 
                                 <span style="color:red" ng-show="createStudent.line1.$dirty && createStudent.line1.$invalid">
-                                    <span ng-show="createStudent.line1.$error.required">Address Line1 is required.</span>
+                                    <span ng-show="createStudent.line1.$error.required">Address line1 is required.</span>
                                 </span>
                             </div>
                         </div>
@@ -133,12 +133,12 @@
                                     <td>{{mark.subjectName}}</th>
                                     <td>{{mark.subjectCode}}</td>
                                     <td>{{mark.totalMarks}}</td>
-                                    <td><input type="number" class="form-control" name="marks" ng-model="mark.subjectMarks"  min="0" max={{mark.totalMarks}}>  
+                                    <td><input type="number" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks"  min="0" max={{mark.totalMarks}}>  
                                     </td>
                                     <td>                                     
-                                            <span ng-show="createStudent.marks.$invalid" class="glyphicon glyphicon-remove" style="color:red">
+                                            <span ng-show="createStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">
                                             </span>
-                                            <span ng-show="createStudent.marks.$dirty && createStudent.marks.$valid"class="glyphicon glyphicon-ok text-success"></span>
+                                            <span ng-show="createStudent.marks{{$index}}.$dirty && createStudent.marks{{$index}}.$valid"class="glyphicon glyphicon-ok text-success"></span>
 
                                     </td>
                                 </tr>
