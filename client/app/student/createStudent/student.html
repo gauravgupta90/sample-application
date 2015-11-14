@@ -136,9 +136,9 @@
                                     <td><input type="text" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks"  lower-than="{{mark.totalMarks}}" numbers-only>  
                                     </td>
                                     <td>                                     
-                                            <span ng-show="createStudent.marks{{$index}}.$dirty && createStudent.marks{{$index}}.$error.lowerThan" class="glyphicon glyphicon-remove" style="color:red">
+                                            <span ng-show="createStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">
                                             </span>
-                                            <span ng-show="createStudent.marks{{$index}}.$dirty && !createStudent.marks{{$index}}.$error.lowerThan" class="glyphicon glyphicon-ok text-success"></span>
+                                            <span ng-show="createStudent.marks{{$index}}.$dirty && createStudent.marks{{$index}}.$valid"class="glyphicon glyphicon-ok text-success"></span>
 
                                     </td>
                                 </tr>

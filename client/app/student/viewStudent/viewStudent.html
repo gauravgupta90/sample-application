@@ -31,7 +31,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Mobile Number*</label>
-                                <input type="text" class="form-control" ng-model="student.mobile" name="mobile" ng-minlength="10" ng-maxlength="10" ng-readonly= "shouldReadOnly" required>
+                                <input type="text" class="form-control" ng-model="student.mobile" name="mobile" ng-minlength="10" ng-maxlength="10" ng-readonly= "shouldReadOnly" numbers-only required>
 
                                 <span style="color:red" ng-show="updateStudent.mobile.$dirty && updateStudent.mobile.$invalid">
                                     <span ng-show="updateStudent.mobile.$error.required || updateStudent.mobile.$error.number">Valid mobile number is required.</span>
@@ -93,7 +93,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Pin*</label>
-                                <input type="number" class="form-control" name="pin" ng-model="student.address.pin" ng-readonly= "shouldReadOnly" ng-minlength="6" ng-maxlength="6" required>
+                                <input type="text" class="form-control" name="pin" ng-model="student.address.pin" ng-readonly= "shouldReadOnly" ng-minlength="6" ng-maxlength="6" numbers-only required>
 
                                 <span style="color:red" ng-show="updateStudent.pin.$dirty && updateStudent.pin.$invalid">
                                     <span ng-show="updateStudent.pin.$error.required">Pin Number is required.</span>
@@ -134,7 +134,7 @@
                                     <td>{{mark.subjectName}}</th>
                                     <td>{{mark.subjectCode}}</td>
                                     <td>{{mark.totalMarks}}</td>
-                                    <td><input type="number" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly" min="0" max={{mark.totalMarks}}>
+                                    <td><input type="text" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly" lower-than="{{mark.totalMarks}}" numbers-only>
                                     </td>
                                     <td>                                     
                                             <span ng-show="updateStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">

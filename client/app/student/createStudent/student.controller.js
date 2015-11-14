@@ -17,6 +17,7 @@ angular.module('myAppApp')
     $scope.create = function(){
         $http.post('/api/students', $scope.student)	    
 	    .success(function(res){
+            console.log( $scope.student);
             alert("Student successfully created");
             $scope.student = {};
             window.location="http://localhost:9000/listStudent";      
