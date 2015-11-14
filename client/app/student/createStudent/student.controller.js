@@ -3,6 +3,7 @@
 angular.module('myAppApp')
   .controller('StudentCtrl', function ($scope, $http, $location) {
   	$scope.student = {};
+    $scope.onlyNumbers = '/^\d+$/';
 
     $scope.init = function(){
         $http.get('/api/subjects')      
@@ -33,4 +34,23 @@ angular.module('myAppApp')
     }
 
     $scope.init();
-});
+})
+.directive("numbersOnly", function () {
+    return {
+        require: "ngModel",
+        link: function (scope, element, attrs, modelCtrl) {
+
+            modelCtrl.$parsers.push(function (inputValue) {
+               if (inputValue == undefined) return '' 
+               var transformedInput = inputValue.replace(/[^0-9]/g, ''); 
+               if (transformedInput!=inputValue) {
+                  modelCtrl.$setViewValue(transformedInput);
+                  modelCtrl.$render();
+               }         
+
+               return transformedInput;         
+            });
+        }
+    };
+})
+
