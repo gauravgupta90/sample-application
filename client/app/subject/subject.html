@@ -51,28 +51,41 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
         
-            <form novalidate="">
+            <form name="createSubject" novalidate>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Subject Name*</label>
-                        <input type="text" class="form-control" ng-model="subject.subjectName">
+                        <input type="text" class="form-control" name="name" ng-model="subject.subjectName" required>
+
+                        <span style="color:red" ng-show="createSubject.name.$dirty && createSubject.name.$invalid">
+                            <span ng-show="createSubject.name.$error.required">Subject name is required.</span>
+                        </span>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Subject Code*</label>
-                        <input type="text" class="form-control" ng-model="subject.subjectCode">                           
+                        <input type="text" class="form-control" name="code" ng-model="subject.subjectCode" required>
+
+                        <span style="color:red" ng-show="createSubject.code.$dirty && createSubject.code.$invalid">
+                            <span ng-show="createSubject.code.$error.required">Subject code is required.</span>
+                        </span>                       
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Total Marks*</label>
-                        <input type="number" class="form-control" ng-model="subject.totalMarks">                           
+                        <input type="number" class="form-control" min="0" name="marks" ng-model="subject.totalMarks" required>
+
+                        <span style="color:red" ng-show="createSubject.marks.$dirty && createSubject.marks.$invalid">
+                            <span ng-show="createSubject.marks.$error.required">Subject marks is required.</span>
+                            <span ng-show="createSubject.marks.$invalid && !createSubject.marks.$error.required">Invalid marks.</span>
+                        </span>                           
                     </div>
                 </div>
                 <div class="row">
 	                <div class="form-group col-xs-12">
-	                    <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="saveSubject()">Save</button>
+	                    <button type="submit" class="btn btn-success btn-lg pull-right" ng-disabled="createSubject.$invalid" ng-click="saveSubject()">Save</button>
 	                </div>
 	            </div>
                 
