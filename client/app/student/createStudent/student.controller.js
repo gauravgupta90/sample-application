@@ -19,8 +19,12 @@ angular.module('myAppApp')
             alert("Student successfully created");
             $scope.student = {};
             window.location="http://localhost:9000/listStudent";      
-        }).error(function(err){
-        	alert("Please check the data you have entered");
+        }).error(function(err, status){
+
+            if(status == 409)
+                alert("Email or phone number already registered");
+        	else
+                alert("Please check the data you have entered");
         })        
     }
 

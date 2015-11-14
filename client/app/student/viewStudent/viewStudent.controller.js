@@ -28,8 +28,11 @@ angular.module('myAppApp')
 			$scope.init();
             alert("Updated Successfully");
             $location.path('/listStudent');        
-	    }).error(function(err){
-	      	alert("Unable to update");
+	    }).error(function(err, status){
+            if(status == 409)
+                alert("Email or phone number already registered");
+            else
+                alert("Unable to update");
 	    })
     }
 
