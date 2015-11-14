@@ -91,11 +91,13 @@
                                 <tr>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
+                                    <th>Total Marks</th>
                                     <th>Marks Scored</th>
                                 </tr>           
                                 <tr ng-repeat="mark in student.marks">
                                     <td>{{mark.subjectName}}</th>
                                     <td>{{mark.subjectCode}}</td>
+                                    <td>{{mark.totalMarks}}</td>
                                     <td><input type="text" class="form-control" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly"></td>
                                 </tr>
                             </table>

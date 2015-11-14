@@ -125,12 +125,22 @@
                                 <tr>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
+                                    <th>Total Marks</th>
                                     <th>Marks Scored</th>
+                                    <th></th>
                                 </tr>           
                                 <tr ng-repeat="mark in student.marks">
                                     <td>{{mark.subjectName}}</th>
                                     <td>{{mark.subjectCode}}</td>
-                                    <td><input type="text" class="form-control" ng-model="mark.subjectMarks"></td>
+                                    <td>{{mark.totalMarks}}</td>
+                                    <td><input type="number" class="form-control" name="marks" ng-model="mark.subjectMarks"  min="0" max={{mark.totalMarks}}>  
+                                    </td>
+                                    <td>                                     
+                                            <span ng-show="createStudent.marks.$invalid" class="glyphicon glyphicon-remove" style="color:red">
+                                            </span>
+                                            <span ng-show="createStudent.marks.$dirty && createStudent.marks.$valid"class="glyphicon glyphicon-ok text-success"></span>
+
+                                    </td>
                                 </tr>
                             </table>
                         </div>                                              
