@@ -75,7 +75,7 @@
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Total Marks*</label>
-                        <input type="number" class="form-control" min="0" name="marks" ng-model="subject.totalMarks" required>
+                        <input type="text" class="form-control" min="0" name="marks" ng-model="subject.totalMarks" required numbers-only>
 
                         <span style="color:red" ng-show="createSubject.marks.$dirty && createSubject.marks.$invalid">
                             <span ng-show="createSubject.marks.$error.required">Subject marks is required.</span>
