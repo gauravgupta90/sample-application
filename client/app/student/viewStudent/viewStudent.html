@@ -137,9 +137,9 @@
                                     <td><input type="text" class="form-control" name="marks{{$index}}" ng-model="mark.subjectMarks" ng-readonly= "shouldReadOnly" lower-than="{{mark.totalMarks}}" numbers-only>
                                     </td>
                                     <td>                                     
-                                            <span ng-show="updateStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">
+                                            <span ng-show="updateStudent.marks{{$index}}.$dirty && updateStudent.marks{{$index}}.$invalid" class="glyphicon glyphicon-remove" style="color:red">
                                             </span>
-                                            <span ng-show="updateStudent.marks{{$index}}.$dirty && updateStudent.marks{{$index}}.$valid"class="glyphicon glyphicon-ok text-success"></span>
+                                            <span ng-show="updateStudent.marks{{$index}}.$valid"class="glyphicon glyphicon-ok text-success"></span>
 
                                     </td>
                                 </tr>
