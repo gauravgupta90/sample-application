@@ -6,6 +6,7 @@ var controller = require('./student.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/totalStudentMarksAverage', controller.totalStudentMarksAverage);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

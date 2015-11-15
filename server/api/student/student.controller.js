@@ -101,3 +101,38 @@ exports.destroy = function(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 };
+
+// Gets total Student Marks Average
+exports.totalStudentMarksAverage = function(req, res) {
+  Student.findAsync()
+    .then(calculateAverageMarks(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+function calculateAverageMarks(res, statusCode) {
+  statusCode = statusCode || 200;
+  return function(entity) {
+    if (entity) {
+      var obj = {
+        totalStudent : entity.length,
+        totalMarks : 0,
+        totalSubject : 0,
+        totalMarksScored : 0,
+        averageMarks : 0
+      }
+      for( var i in entity){
+        for( var j in entity[i].marks){
+            var temp= entity[i].marks[j];
+            if(temp.subjectName && temp.subjectCode && temp.totalMarks && temp.subjectMarks){
+                obj.totalSubject++;
+                obj.totalMarks=parseInt(obj.totalMarks)+parseInt(temp.totalMarks);
+                obj.totalMarksScored=parseInt(obj.totalMarksScored)+parseInt(temp.subjectMarks);
+            }            
+        }
+      }
+      obj.averageMarks = ((obj.totalMarksScored/obj.totalMarks)*100).toFixed(2);
+      return obj;
+    }
+  };
+}
