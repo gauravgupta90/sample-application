@@ -23,6 +23,9 @@ angular.module('myAppApp')
     
 
     $scope.update = function(){
+        for(var i in $scope.student.marks){
+            $scope.student.marks[i].subjectMarks=parseInt($scope.student.marks[i].subjectMarks);
+        }
     	$http.put('/api/students/'+param, $scope.student)	    
 		.success(function(res){
 			$scope.init();

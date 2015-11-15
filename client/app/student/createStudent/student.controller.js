@@ -15,6 +15,9 @@ angular.module('myAppApp')
     }
 
     $scope.create = function(){
+        for(var i in $scope.student.marks){
+            $scope.student.marks[i].subjectMarks=parseInt($scope.student.marks[i].subjectMarks);
+        }
         $http.post('/api/students', $scope.student)	    
 	    .success(function(res){
             console.log( $scope.student);

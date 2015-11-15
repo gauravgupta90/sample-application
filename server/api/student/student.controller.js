@@ -141,25 +141,27 @@ function calculateAverageMarks(res, statusCode) {
 exports.totalStudentMarksAverage1 = function(req, res) {
   Student.aggregate([
     { "$match": {}},
-    // Unwind Items first
+
+    // { "$group": {
+    //     "_id": "null",
+    //     "totalStudent": { "$sum": 1 }
+    // }},
+
+    
     { "$unwind": "$marks" },
 
-    // Group to get that total
+    
     { "$group": {
         "_id": "null",
-        "marks_total": { "$sum": "$marks.totalMarks" },
-        "marks_scored_total": { "$sum": "$marks.subjectMarks" }
+        "totalMarks": { "$sum": "$marks.totalMarks" },
+        "totalMarksScored": { "$sum": "$marks.subjectMarks" },
+        "totalSubject": { "$sum": 1 }
     }}
     ],function (err, result) {
         if (err) {
             console.log(err);
             return;
         }
-        console.log(result);
+        res.status(200).json(result);
     });
-
-  // Student.findAsync()
-  //   .then(calculateAverageMarks(res))
-  //   .then(responseWithResult(res))
-  //   .catch(handleError(res));
 };
