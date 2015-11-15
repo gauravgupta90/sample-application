@@ -136,3 +136,30 @@ function calculateAverageMarks(res, statusCode) {
     }
   };
 }
+
+// Gets total Student Marks Average
+exports.totalStudentMarksAverage1 = function(req, res) {
+  Student.aggregate([
+    { "$match": {}},
+    // Unwind Items first
+    { "$unwind": "$marks" },
+
+    // Group to get that total
+    { "$group": {
+        "_id": "null",
+        "marks_total": { "$sum": "$marks.totalMarks" },
+        "marks_scored_total": { "$sum": "$marks.subjectMarks" }
+    }}
+    ],function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log(result);
+    });
+
+  // Student.findAsync()
+  //   .then(calculateAverageMarks(res))
+  //   .then(responseWithResult(res))
+  //   .catch(handleError(res));
+};
