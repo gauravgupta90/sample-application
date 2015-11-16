@@ -140,7 +140,7 @@ function calculateAverageMarks(res, statusCode) {
 // Gets total Student Marks Average
 exports.totalStudentMarksAverage1 = function(req, res) {
   Student.aggregate([
-    { "$match": {}},
+    //{ "$match": {} },
 
     // { "$group": {
     //     "_id": "null",
@@ -157,6 +157,29 @@ exports.totalStudentMarksAverage1 = function(req, res) {
         "totalMarksScored": { "$sum": "$marks.subjectMarks" },
         "totalSubject": { "$sum": 1 }
     }}
+    ],function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        res.status(200).json(result);
+    });
+};
+
+// Gets total Student Marks Average
+exports.studentMarksAverage = function(req, res) {
+  Student.aggregate([
+ 
+    { "$unwind": "$marks" },
+
+    { "$group": {
+        "_id": "$_id",
+        "totalMarks": { "$sum": "$marks.totalMarks" },
+        "totalMarksScored": { "$sum": "$marks.subjectMarks" },
+        "totalSubject": { "$sum": 1 },
+        "studentInfo": {"$push": {"name": "$name", "mobile": "$mobile", "email": "$address.email"}}
+    }},
+    { $sort : { _id : 1 } }
     ],function (err, result) {
         if (err) {
             console.log(err);

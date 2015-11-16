@@ -1,0 +1,67 @@
+<navbar></navbar>
+
+<section class="primary" id="contact">
+    <div class="container">
+    	<div class="row">
+	        <div class="col-lg-6">
+	            <h3>Student Summary</h3>        
+	        </div>
+	        <div class="col-lg-6">
+			</div>
+	    </div>
+
+        <div class="col-sm-12">
+		    <table class="table table-striped">
+		    	<tr>
+		            <th>Students</th>
+		            <th>Total Subject</th>
+		            <th>Total Marks</th>
+		            <th>Total Marks Scored</th>
+		            <th>Average Marks</th>
+		        </tr>	        
+		        <tr>
+		            <td>{{studentAvg.totalStudent}}</th>
+		            <td>{{studentAvg.totalSubject}}</td>
+		            <td>{{studentAvg.totalMarks}}</td>
+		            <td>{{studentAvg.totalMarksScored}}</td>
+		            <td>{{calculateAverage(studentAvg.totalMarks,studentAvg.totalMarksScored)}}</td>            
+		        </tr>
+		    </table>
+		</div>
+
+
+        <div class="row">
+	        <div class="col-lg-6">
+	            <h3>Student List</h3>        
+	        </div>
+	        <div class="col-lg-6">
+			</div>
+	    </div>
+
+        <div class="col-sm-12">
+		    <table class="table table-striped">
+		    	<tr>
+		            <th>Name</th>
+		            <th>Email</th>
+		            <th>Mobile</th>
+		            <th>Total Marks</th>
+		            <th>Total Marks Scored</th>
+		            <th>Subjects</th>
+		            <th>Average</th>
+		        </tr>	        
+		        <tr ng-repeat="student in students">
+		            <td>{{student.studentInfo[0].name}}</th>
+		            <td>{{student.studentInfo[0].email}}</td>
+		            <td>{{student.studentInfo[0].mobile}}</td>
+		            <td>{{student.totalMarks}}</td>
+		            <td>{{student.totalMarksScored}}</td>
+		            <td>{{student.totalSubject}}</td>
+		            <td>{{calculateAverage(student.totalMarks,student.totalMarksScored)}}</td>
+		        </tr>
+		    </table>
+		</div>
+    </div>
+</section>
+
+
+<footer></footer>
