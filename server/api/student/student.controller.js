@@ -102,61 +102,27 @@ exports.destroy = function(req, res) {
     .catch(handleError(res));
 };
 
+
 // Gets total Student Marks Average
 exports.totalStudentMarksAverage = function(req, res) {
-  Student.findAsync()
-    .then(calculateAverageMarks(res))
-    .then(responseWithResult(res))
-    .catch(handleError(res));
-};
-
-function calculateAverageMarks(res, statusCode) {
-  statusCode = statusCode || 200;
-  return function(entity) {
-    if (entity) {
-      var obj = {
-        totalStudent : entity.length,
-        totalMarks : 0,
-        totalSubject : 0,
-        totalMarksScored : 0,
-        averageMarks : 0
-      }
-      for( var i in entity){
-        for( var j in entity[i].marks){
-            var temp= entity[i].marks[j];
-            if(temp.subjectName && temp.subjectCode && temp.totalMarks && temp.subjectMarks){
-                obj.totalSubject++;
-                obj.totalMarks=parseInt(obj.totalMarks)+parseInt(temp.totalMarks);
-                obj.totalMarksScored=parseInt(obj.totalMarksScored)+parseInt(temp.subjectMarks);
-            }            
-        }
-      }
-      obj.averageMarks = ((obj.totalMarksScored/obj.totalMarks)*100).toFixed(2);
-      return obj;
-    }
-  };
-}
-
-// Gets total Student Marks Average
-exports.totalStudentMarksAverage1 = function(req, res) {
   Student.aggregate([
-    //{ "$match": {} },
-
-    // { "$group": {
-    //     "_id": "null",
-    //     "totalStudent": { "$sum": 1 }
-    // }},
-
-    
+      
     { "$unwind": "$marks" },
 
     
     { "$group": {
+        "_id": "$_id",
+        "marks": { "$sum": "$marks.totalMarks" },
+        "marksScored": { "$sum": "$marks.subjectMarks" },
+        "subjectCount": { "$sum": 1 }
+    }},
+    { "$group": {
         "_id": "null",
-        "totalMarks": { "$sum": "$marks.totalMarks" },
-        "totalMarksScored": { "$sum": "$marks.subjectMarks" },
-        "totalSubject": { "$sum": 1 }
-    }}
+        "totalMarks": { "$sum": "$marks" },
+        "totalMarksScored": { "$sum": "$marksScored" },
+        "totalSubject": { "$sum": "$subjectCount" },
+        "totalStudent": { "$sum": 1 }
+    }},
     ],function (err, result) {
         if (err) {
             console.log(err);

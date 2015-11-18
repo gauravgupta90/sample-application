@@ -13,7 +13,7 @@ angular.module('myAppApp')
             alert("Unable to get student list");
         });
 
-        $http.get('/api/students/totalStudentMarksAverage1')      
+        $http.get('/api/students/totalStudentMarksAverage')      
          .success(function(res){
             $scope.studentAvg = res[0];
         }).error(function(err){

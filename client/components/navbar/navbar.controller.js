@@ -13,7 +13,12 @@ angular.module('myAppApp')
     {
       'title': 'Subject',
       'link': '/subject'
-    }];
+    },
+    {
+      'title': 'Student Summary',
+      'link': '/listStudentAvg'
+    }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

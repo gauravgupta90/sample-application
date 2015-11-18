@@ -7,7 +7,6 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/totalStudentMarksAverage', controller.totalStudentMarksAverage);
-router.get('/totalStudentMarksAverage1', controller.totalStudentMarksAverage1);
 router.get('/studentMarksAverage', controller.studentMarksAverage);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
