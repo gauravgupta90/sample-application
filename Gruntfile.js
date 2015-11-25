@@ -1,6 +1,5 @@
 // Generated on 2015-11-10 using generator-angular-fullstack 3.0.0-rc8
 'use strict';
-grunt.loadNpmTasks('grunt-forever');
 
 module.exports = function (grunt) {
   var localConfig;
