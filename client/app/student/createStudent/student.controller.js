@@ -23,7 +23,7 @@ angular.module('myAppApp')
             console.log( $scope.student);
             alert("Student successfully created");
             $scope.student = {};
-            window.location="http://localhost:9000/listStudent";      
+            window.location="http://ec2-54-169-130-194.ap-southeast-1.compute.amazonaws.com:9000/listStudent";      
         }).error(function(err, status){
 
             if(status == 409)
